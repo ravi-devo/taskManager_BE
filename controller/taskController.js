@@ -3,8 +3,8 @@ const Task = require("../model/taskModel");
 const taskController = {
     addTask: async (req, res) => {
         try {
-            const { title, description, category, priority } = req.body;
-            const response = await Task.create({user: req.user._id, title, description, category, priority });
+            const { title, description, category, dueDate } = req.body;
+            const response = await Task.create({user: req.user._id, title, description, category, dueDate });
             res.status(201).json({ message: "Task added successfully", data: response });
         } catch (error) {
             res.status(400).json({ message: "Error adding the task", error });
