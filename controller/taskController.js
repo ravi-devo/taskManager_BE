@@ -12,7 +12,7 @@ const taskController = {
     },
     getTask: async (req, res) => {
         try {
-            const response = await Task.find();
+            const response = await Task.find({user: req.user._id});
             res.status(200).json({ message: "Task retrieved successfully", data: response });
         } catch (error) {
             res.status(400).json({ message: "Error getting the task", error });
